@@ -1,6 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addSmurf } from "../actions";
+import {
+  Container,
+  Col,
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardHeader,
+  Button,
+  Form
+} from "reactstrap";
 
 class SmurfForm extends Component {
   constructor(props) {
@@ -37,7 +50,7 @@ class SmurfForm extends Component {
 
   render() {
     return (
-      <div>
+      <Form onSubmit={this.addSmurfToList}>
         <input
           type="text"
           name="name"
@@ -60,8 +73,10 @@ class SmurfForm extends Component {
           onChange={this.handleChanges}
           value={this.state.smurf.height}
         />
-        <button onClick={this.addSmurfToList}>Add Friend</button>
-      </div>
+        <Button color="primary" onClick={this.addSmurfToList}>
+          Add Friend
+        </Button>
+      </Form>
     );
   }
 }

@@ -8,6 +8,8 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./reducers";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 const store = createStore(
   rootReducer, // this is the most basic reducer. A function that returns and object. Replace it.
   applyMiddleware(thunk, logger)
