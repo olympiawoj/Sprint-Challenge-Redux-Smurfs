@@ -12,7 +12,8 @@ import {
   CardTitle,
   CardSubtitle,
   CardHeader,
-  Button
+  Button,
+  Spinner
 } from "reactstrap";
 
 import SmurfForm from "./SmurfForm";
@@ -29,11 +30,13 @@ const SmurfList = props => {
         Get Smurfs
       </Button>
       {props.error && <h4>{props.error}</h4>}
-      {props.fetchingSmurfs && <h4>Loading smurfs...</h4>}
+      {props.fetchingSmurfs && <Spinner color="primary" />}
       {props.smurfs.map(smurf => (
         <Col sm="12">
           <Card class="align-self-center">
-            <CardHeader>Name: {smurf.name}</CardHeader>
+            <CardHeader>
+              Name: {smurf.name} <Button close />
+            </CardHeader>
             <CardBody>
               <CardText>Age: {smurf.age}</CardText>
               <CardText>Height: {smurf.height}</CardText>
