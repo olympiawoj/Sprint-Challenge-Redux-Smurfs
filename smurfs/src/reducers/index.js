@@ -22,7 +22,14 @@
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
 
-import { GET_SMURFS_START, GET_SMURFS_SUCCESS } from "../actions";
+import {
+  GET_SMURFS_START,
+  GET_SMURFS_SUCCESS,
+  GET_SMURFS_FAILURE,
+  ADD_SMURFS_START,
+  ADD_SMURFS_SUCCESS,
+  ADD_SMURFS_FAILURE
+} from "../actions";
 
 const initialState = {
   smurfs: [],
@@ -55,6 +62,50 @@ const reducer = (state = initialState, action) => {
         updatingSmurf: false,
         deletingSmurf: false,
         error: null
+      };
+
+    case GET_SMURFS_FAILURE:
+      return {
+        ...state,
+        smurfs: [],
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        updatingSmurf: false,
+        deletingSmurf: false,
+        error: "You failed at getting smurfs"
+      };
+
+    case ADD_SMURFS_START:
+      return {
+        ...state,
+        smurfs: [],
+        fetchingSmurfs: false,
+        addingSmurf: true,
+        updatingSmurf: false,
+        deletingSmurf: false,
+        error: null
+      };
+
+    case ADD_SMURFS_SUCCESS:
+      return {
+        ...state,
+        smurfs: action.payload,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        updatingSmurf: false,
+        deletingSmurf: false,
+        error: null
+      };
+
+    case ADD_SMURFS_FAILURE:
+      return {
+        ...state,
+        smurfs: [],
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        updatingSmurf: false,
+        deletingSmurf: false,
+        error: "Error adding a smurf"
       };
 
     default:
