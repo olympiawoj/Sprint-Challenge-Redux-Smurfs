@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import "./App.css";
-import { getSmurfs } from "../actions";
+import { getSmurfs, deleteSmurf } from "../actions";
 import {
   Container,
   Col,
@@ -35,7 +35,8 @@ const SmurfList = props => {
         <Col sm="12">
           <Card class="align-self-center">
             <CardHeader>
-              Name: {smurf.name} <Button close />
+              Name: {smurf.name}{" "}
+              <Button onClick={() => props.deleteSmurf(smurf.id)} close />
             </CardHeader>
             <CardBody>
               <CardText>Age: {smurf.age}</CardText>
@@ -57,5 +58,5 @@ const mstp = state => ({
 
 export default connect(
   mstp,
-  { getSmurfs }
+  { getSmurfs, deleteSmurf }
 )(SmurfList);

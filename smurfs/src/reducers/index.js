@@ -28,7 +28,10 @@ import {
   GET_SMURFS_FAILURE,
   ADD_SMURFS_START,
   ADD_SMURFS_SUCCESS,
-  ADD_SMURFS_FAILURE
+  ADD_SMURFS_FAILURE,
+  DELETE_SMURFS_START,
+  DELETE_SMURFS_SUCCESS,
+  DELETE_SMURFS_FAILURE
 } from "../actions";
 
 const initialState = {
@@ -106,6 +109,27 @@ const reducer = (state = initialState, action) => {
         updatingSmurf: false,
         deletingSmurf: false,
         error: "Error adding a smurf"
+      };
+
+    case DELETE_SMURFS_START:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: true,
+        updatingSmurf: false,
+        deletingSmurf: true,
+        error: null
+      };
+
+    case DELETE_SMURFS_SUCCESS:
+      return {
+        ...state,
+        smurfs: action.payload,
+        fetchingSmurfs: false,
+        addingSmurf: true,
+        updatingSmurf: false,
+        deletingSmurf: false,
+        error: null
       };
 
     default:
